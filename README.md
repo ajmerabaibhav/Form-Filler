@@ -51,9 +51,9 @@ This is a Claude Code skill that acts like the best counsellor money can buy: it
 Requires [Claude Code](https://claude.com/claude-code) (any paid plan) and the [Claude in Chrome extension](https://claude.com/chrome) for form-filling.
 
 ```bash
-git clone https://github.com/YOURUSER/form-filler
-cp -r form-filler/skills/apply ~/.claude/skills/apply
-cp -r form-filler/template ~/application-agent
+git clone https://github.com/23029-MUITP/Form-Filler
+cp -r Form-Filler/skills/apply ~/.claude/skills/apply
+cp -r Form-Filler/template ~/application-agent
 ```
 
 Then open Claude Code and run:
