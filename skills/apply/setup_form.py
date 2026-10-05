@@ -50,6 +50,7 @@ FIELDS = [
     ("Dietary", "Dietary preference (events ask)", "optional"),
     ("T-shirt size", "T-shirt size (hackathons ask)", "optional"),
     ("Emergency contact", "Emergency contact (residencies ask)", "name + phone"),
+    ("Resume file", "Resume file (full path, for upload fields)", "~/Documents/resume.pdf"),
 ]
 INPUT_FIELDS = [f for f in FIELDS if f[1]]
 TOTAL = len(INPUT_FIELDS)
@@ -342,6 +343,8 @@ def main():
             import curses
             curses.wrapper(run_form, values)
             save(values)
+        except KeyboardInterrupt:
+            save(values)  # Ctrl+C keeps what was typed so far
         except Exception:
             simple_mode(values)
     else:

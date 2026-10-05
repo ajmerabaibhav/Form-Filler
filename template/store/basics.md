@@ -31,3 +31,4 @@
 - Dietary preference (events ask):
 - T-shirt size (hackathons ask):
 - Emergency contact (residencies ask):
+- Resume file (full path, for upload fields):

@@ -1,13 +1,13 @@
 ---
 name: apply
-description: Personal application agent. One-time setup from your resume, then paste any form link and it researches the program, drafts honest answers grounded in your real work, and fills the form in your browser — stopping before Submit. Subcommands - setup, run, answer, log, stats, store, showcase.
+description: Personal application agent. One-time setup from your resume, then paste any form link and it researches the program, drafts honest answers grounded in your real work, and fills the form in your browser — stopping before Submit. Subcommands - setup, run, answer, update, store, log, stats, showcase.
 ---
 
 # /apply — personal application agent
 
 Base directory: `~/application-agent/`. **Read `AGENT.md` first, always** — it holds the mindset and the four hard rules (store-only facts, no [UNCONFIRMED] claims, flag gaps instead of filling them, never submit without approval). Then read `store/basics.md`, `store/profile.md`, every file in `store/projects/`, and `tracker/learnings.md`.
 
-**Zero-friction entry:** if the user gives `/apply` just a URL (with or without a target name), treat it as `run`, inferring the target name from the page itself. If the store is empty or `basics.md` is unfilled, run `setup` first — once — then continue straight into what they asked for.
+**Zero-friction entry:** if the user gives `/apply` just a URL (with or without a target name), treat it as `run`, inferring the target name from the page itself. If the store is empty or `basics.md` is unfilled, run `setup` first — once — then continue straight into what they asked for. **`/apply` with no arguments:** show a three-line status (basics filled X/21, projects in store, applications logged) and the one next step.
 
 ## Subcommands
 
@@ -35,10 +35,10 @@ Open with the Form Filler banner in a code fence — the leopard face, the wordm
 "I fill applications with your real story — never inventing anything, never clicking Submit for you. Two minutes of setup, then it's just links. First: your resume (a file path, or paste the text)."
 
 1. **Resume first.** Ask for their resume (a file path, or pasted text). That alone is enough to start — read it and build `store/profile.md` plus one file per significant project/role in `store/projects/` (what it was, the outcome with numbers, the skills it shows, the story). Mark anything inferred rather than stated as [UNCONFIRMED].
-2. **Basics — a table right here in chat (default; no second window).** Every time the basics table is rendered (setup, update, or reviewing), print the leopard progress track directly above it in a code fence — position = filled fields / 20, track 30 chars wide:
+2. **Basics — a table right here in chat (default; no second window).** Every time the basics table is rendered (setup, update, or reviewing), print the leopard progress track directly above it in a code fence — position = filled fields / 21, track 30 chars wide:
 
    ```
-   ~~~~~~~~~~~~~~~~~~🐆············ 60% · 12/20 fields
+   ~~~~~~~~~~~~~~~~~~🐆············ 60% · 12/21 fields
    ```
 
    The leopard crawls forward each time the user fills more fields. Then the numbered markdown table of the universal fields, with what's already known pre-filled from the resume:
@@ -49,7 +49,7 @@ Open with the Form Filler banner in a code fence — the leopard face, the wordm
    | 2 | Date of birth | — |
    | … | … | … |
 
-   Fields: first name, last name, display name, date of birth, gender, email, phone (+country code), city, country, nationality, LinkedIn, X, GitHub, website, Telegram/Discord, current role & org, one-line bio, dietary, t-shirt size, emergency contact. Then say: "Reply with the numbers you want to fill, like `2: 14 Aug 1998, 12: @handle` — skip anything you like." Parse the reply, write `store/basics.md`, and show the completed table back. One round-trip, everything optional.
+   Fields: first name, last name, display name, date of birth, gender, email, phone (+country code), city, country, nationality, LinkedIn, X, GitHub, website, Telegram/Discord, current role & org, one-line bio, dietary, t-shirt size, emergency contact, resume file path (ask them to drop the PDF path — it's what upload fields get). Then say: "Reply with the numbers you want to fill, like `2: 14 Aug 1998, 12: @handle` — skip anything you like." Parse the reply, write `store/basics.md`, and show the completed table back. One round-trip, everything optional.
 
    *Optional power-user alternative:* a full-screen terminal form with a 🐆 progress bar exists at `~/.claude/skills/apply/setup_form.py` (run in any terminal; remembers previous answers). Mention it once, never require it.
 3. **Depth (optional, encouraged).** Ask: "Anything real that isn't on the resume — side projects, numbers, communities you run, things you shipped?" Whatever they add goes into the store the same way. More real detail now = stronger every future application.
@@ -57,18 +57,27 @@ Open with the Form Filler banner in a code fence — the leopard face, the wordm
 5. Close with: "Setup done. From now on, just paste any application link."
 
 ### `/apply run [target name] <form URL>` — the full pipeline ("paste the link and go")
-1. **Identify** — open the URL first if no target name was given; the page tells you what the program is.
+1. **Identify** — open the URL first if no target name was given; the page tells you what the program is. Check `tracker/log.jsonl` and `applications/` for the same target or URL: if it exists, say so and reuse those drafts instead of starting over.
 2. **Research** — WebSearch (+ site:reddit.com searches) on the target: what it really selects for, the language it uses, and the backgrounds of people actually selected. Write a brief to `research/<target-slug>.md` ending with the one-line positioning that makes this user rare-and-valued here. Reuse an existing brief if fresh (<30 days). For simple RSVPs/meetups with no essay questions, skip research — don't over-ceremonialise a two-field form.
 3. **Read the form** — load the URL with the Chrome tools (invoke the claude-in-chrome skill first). Extract every field, type, and limit. Use the user's already-signed-in Chrome session.
 4. **Draft** — run the `answer` loop for every essay question against the research brief. Save to `applications/<target-slug>/<date>-draft.md`. Draft and fill in one pass; don't pause mid-way.
-5. **Fill** — boilerplate fields (name, email, phone, links, age, city…) come straight from `store/basics.md`; essay fields from the drafts. Leave blank only what the store genuinely doesn't hold, and list those at the end as a short "to unlock this, give me X" list — needed facts, not failures. Screenshot the completed form.
+5. **Fill** — boilerplate fields (name, email, phone, links, age, city…) come straight from `store/basics.md`; essay fields from the drafts. File-upload fields (resume/CV) get the `Resume file` path from basics via the Chrome file-upload tool; if no path is saved, add it to the gap list. Leave blank only what the store genuinely doesn't hold, and list those at the end as a short "to unlock this, give me X" list — needed facts, not failures. Screenshot the completed form.
 6. **Review gate — the single stop.** Present the filled form + drafted answers once, and say plainly: "Filled, not submitted." NEVER click submit/pay/final-confirm; standing permissions do not cover submission — it needs a fresh, explicit "submit it" each time. Sign the review message with the mark, in a code fence:
 
    ```
    ~~~~~~~~~~~~~~~~~~~~~~~~~🐆  filled, not submitted
    F O R M   F I L L E R
    ```
-7. **Track** — append a line to `tracker/log.jsonl` (schema in `tracker/README.md`).
+7. **Track** — append a line to `tracker/log.jsonl` (schema in `tracker/README.md`) with status `filled`. When the user later says they submitted, update that line to `submitted`.
+
+**Platform notes for filling** (check the page after every step — a field isn't filled until a screenshot shows it):
+- **Google Forms** — multi-page: fill a page, click *Next*, never *Submit*. Dropdowns/radios need clicks, not typed text. Upload fields require a Google sign-in; if blocked, add to the gap list.
+- **Typeform** — one question per screen: type, press Enter/OK, wait for the next question. The last screen's button is Submit — stop before it.
+- **Tally / Fillout / Jotform** — standard inputs; long forms paginate with *Next*.
+- **Luma** — registration questions sit in a modal after *Register*/*Request to join*; the modal's final button submits — stop before it.
+- **Ashby / Lever / Greenhouse / Workable** — a resume upload often auto-parses and overwrites typed fields: upload first, then fill/correct the rest.
+- **Airtable forms** — linked-record and multi-select fields need clicks in the picker.
+- Login wall or CAPTCHA: ask the user to clear it in their Chrome, then continue. Never enter passwords.
 
 ### `/apply answer <pasted question or questions>` — the core loop
 For each question:

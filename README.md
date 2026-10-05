@@ -51,10 +51,10 @@ This is a Claude Code skill that acts like the best counsellor money can buy: it
 Requires [Claude Code](https://claude.com/claude-code) (any paid plan) and the [Claude in Chrome extension](https://claude.com/chrome) for form-filling.
 
 ```bash
-git clone https://github.com/23029-MUITP/Form-Filler
-cp -r Form-Filler/skills/apply ~/.claude/skills/apply
-cp -r Form-Filler/template ~/application-agent
+git clone https://github.com/ajmerabaibhav/Form-Filler && Form-Filler/install.sh
 ```
+
+To update later: `cd Form-Filler && git pull && ./install.sh` — your saved data in `~/application-agent` is never overwritten.
 
 Then open Claude Code and run:
 
@@ -115,6 +115,10 @@ Every outcome you log becomes a rule in `tracker/learnings.md` — "this framing
 ## Privacy
 
 Everything lives in plain files on your machine (`~/application-agent/`). Nothing is hosted, no telemetry, nothing leaves your computer except the applications you choose to submit. Your data is yours — this project never sees it.
+
+## Author
+
+Built by [Baibhav Ajmera](https://www.linkedin.com/in/baibhavajmera) ([@ajmerabaibhav](https://github.com/ajmerabaibhav)).
 
 ## License
 
