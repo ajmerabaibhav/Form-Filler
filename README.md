@@ -28,7 +28,7 @@
 
 **Set up once with your resume → paste any application link → the form fills itself → you click Submit.**
 
-*An honest AI application agent that runs inside your own Claude Code. Your data never leaves your laptop.*
+*An honest AI application agent that runs inside your own Claude Code. Your data is stored on your laptop, not on any server of ours.*
 
 **In blind-scored testing, its drafts more than doubled application quality — 7.6 → 16.5 out of 20.** [↓ proof](#does-it-actually-work)
 
@@ -114,7 +114,15 @@ Every outcome you log becomes a rule in `tracker/learnings.md` — "this framing
 
 ## Privacy
 
-Everything lives in plain files on your machine (`~/application-agent/`). Nothing is hosted, no telemetry, nothing leaves your computer except the applications you choose to submit. Your data is yours — this project never sees it.
+Everything lives in plain files on your machine (`~/application-agent/`). This project has no server, no database and no telemetry — its author never sees your data.
+
+To be precise about where your data goes:
+- **Claude (Anthropic):** when you run `/apply`, Claude Code reads the relevant store files and sends them to Anthropic's servers in the conversation, like any Claude Code session. Anthropic's [privacy policy](https://www.anthropic.com/legal/privacy) applies.
+- **Web research:** searches go out with the program's name, never your personal details.
+- **The form you're filling:** gets exactly what you see in the review step, and only when you click Submit yourself.
+- **The setup form** (`setup_form.py`) makes no network calls at all.
+
+Your store isn't backed up by this tool — include `~/application-agent` in Time Machine or a private cloud folder.
 
 ## Author
 
