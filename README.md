@@ -1,136 +1,196 @@
 <div align="center">
 
 ```
-                  ·  ˙    ·    ˙  ·
-               ˙    .-"""""""-.    ˙
-              ·    /  ·  ˙  ·  \    ·
-                  |  (●)   (●)  |
-              ˙    \     ▽     /    ˙
-               ·    '-._____.-'    ·
-                  ˙  ·    ˙    ·  ˙
-
-    ███████╗ ██████╗ ██████╗ ███╗   ███╗
-    ██╔════╝██╔═══██╗██╔══██╗████╗ ████║
-    █████╗  ██║   ██║██████╔╝██╔████╔██║
-    ██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║
-    ██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║
-    ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
-    ███████╗██╗██╗     ██╗     ███████╗██████╗
-    ██╔════╝██║██║     ██║     ██╔════╝██╔══██╗
-    █████╗  ██║██║     ██║     █████╗  ██████╔╝
-    ██╔══╝  ██║██║     ██║     ██╔══╝  ██╔══██╗
-    ██║     ██║███████╗███████╗███████╗██║  ██║
-    ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝
-
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~🐆
-      paste a link. the leopard does the rest.
+      ·  ˙    ·    ˙  ·
+   ˙    .-"""""""-.    ˙
+  ·    /  ·  ˙  ·  \    ·
+      |  (●)   (●)  |
+   ˙   \     ▽     /    ˙
+   ·    '-._____.-'    ·
+      ˙  ·    ˙    ·  ˙
 ```
 
-**Set up once with your resume → paste any application link → the form fills itself → you click Submit.**
+# Form Filler
 
-*An honest AI application agent that runs inside your own Claude Code. Your data is stored on your laptop, not on any server of ours.*
+**Paste an application link. Get the strongest *honest* version of you, filled in and waiting for your review.**
 
-**In blind-scored testing, its drafts more than doubled application quality — 7.6 → 16.5 out of 20.** [↓ proof](#does-it-actually-work)
+An application agent for [Claude Code](https://claude.com/claude-code) that researches each program, drafts every answer from your real work, and fills the form in your own browser — then stops before Submit.
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
+[![Claude Code skill](https://img.shields.io/badge/Claude_Code-skill-D97757)](https://claude.com/claude-code)
+[![Local-first](https://img.shields.io/badge/data-stays_on_your_machine-2F855A)](#privacy)
+
+[Install](#install) · [How it works](#how-it-works) · [Commands](#commands) · [Results](#does-it-work) · [Privacy](#privacy) · [FAQ](#faq)
 
 </div>
 
 ---
 
-# Form Filler — your honest advocate for applications
+## Why
 
-You apply to residencies, fellowships, popup villages, hackathons, clubs, and accelerators. Every form asks the same things about you, but each program selects for something different — and most people lose not on facts, but on presentation.
+Residencies, fellowships, accelerators, hackathons, popup villages — every form asks the same things about you, yet each program selects for something different. Most applicants don't lose on substance. They lose on presentation: buried numbers, generic framing, the wrong story for the room.
 
-This is a Claude Code skill that acts like the best counsellor money can buy: it knows your real story, researches who each program *actually* selects, and writes every answer as the strongest **honest** version of you — then fills the form in your own browser and stops before Submit.
+Form Filler fixes the presentation and refuses to touch the substance.
 
-**Set up once, then just paste links.** Attach your resume, answer a few basics (name, phone, LinkedIn, X, age — the fields every form asks), and you're done. From then on: paste any application URL and the agent researches the program, drafts your answers, and fills the form.
+| | |
+|---|---|
+| **Grounded** | Every claim traces to a fact in your store. Nothing invented, nothing rounded up. |
+| **Researched** | Reads what each program *actually* selects for, and who gets in, before writing a word. |
+| **Asks, never guesses** | If an answer needs a fact it doesn't have, it tells you which one — instead of making it up. |
+| **You submit** | It fills the form and stops. Submitting always takes your explicit go-ahead. |
+| **Learns** | Every acceptance and rejection becomes a rule that every future draft is checked against. |
 
-**Hard rules baked in:** it never invents or exaggerates anything — and that's the point, not a limitation. In blind scoring tests, the honest grounded draft beat the inflated one every time; reviewers can smell padding. Every claim traces to real work in your store. If it can't support a claim, it asks you for the missing fact instead of making something up. And it never clicks Submit — you do.
+## Install
 
-## Install (2 minutes)
-
-Requires [Claude Code](https://claude.com/claude-code) (any paid plan) and the [Claude in Chrome extension](https://claude.com/chrome) for form-filling.
+**Requires** [Claude Code](https://claude.com/claude-code) (any paid plan) and the [Claude in Chrome](https://claude.com/chrome) extension for form-filling.
 
 ```bash
 git clone https://github.com/ajmerabaibhav/Form-Filler && Form-Filler/install.sh
 ```
 
-To update later: `cd Form-Filler && git pull && ./install.sh` — your saved data in `~/application-agent` is never overwritten.
-
-Then open Claude Code and run:
+Then, in Claude Code:
 
 ```
 /apply setup
 ```
 
-That's genuinely the whole learning curve. Three things to remember:
+Hand it your resume, confirm a short table of basics (name, email, phone, links…) in one reply, and you're done. From then on it's just links.
 
-| You type | What happens |
-|---|---|
-| `/apply setup` | once — reads your resume, fills your basics table |
-| `/apply <link>` | every time — researches, drafts, fills the form, stops before Submit |
-| `/apply update` | when life changes — edit your table or hand it a new resume |
+<sub>Update any time with `cd Form-Filler && git pull && ./install.sh` — your saved data is never overwritten.</sub>
 
-It asks for your resume (that alone is enough — add more if you want), then shows a table of the basics every form needs (name, email, phone, LinkedIn, X/GitHub, age, city) right in the chat — pre-filled from your resume, and you fill the gaps in one reply. No extra windows. Everything goes into your **store** — the single source of truth about you, as plain files on your machine. The more real detail you give it (numbers, dates, outcomes), the stronger every future application.
+## How it works
 
-(Prefer a full-screen terminal form instead? One ships in the repo — `python3 ~/.claude/skills/apply/setup_form.py` — with a 🐆 walking a progress bar as you fill. Entirely optional.)
-
-**Your memory is permanent.** Set up once; next time you apply anywhere, you just paste the link — every answer draws on what's already saved. Life changed? `/apply update` shows your saved table to edit in one reply, or hand it a new resume — `/apply update resume.pdf` — and it refreshes your projects without silently deleting anything.
-
-## Use
-
-```
-/apply <form-url>                      → the whole thing: research → draft → fill; you review and submit
-/apply answer <paste any question>     → one tailored, grounded answer + why that framing wins
-/apply update [new resume]             → refresh basics (pre-filled form) or re-read a new resume
-/apply store <resume / notes / folder> → add more real work to your store any time
-/apply discover [focus]                → find open programs that fit you, with deadlines
-/apply interview "Program"             → likely questions, answer outlines, mock round
-/apply followup "Program"              → thank-you / status nudge / rejection reply (you send it)
-/apply log "Program" accepted|rejected → feeds the learning loop (do this every time!)
-/apply stats                           → pipeline, upcoming deadlines, time saved, what framings win
-/apply showcase                        → auto-generate a public proof-of-work page from your store
+```mermaid
+flowchart LR
+    A[Your resume<br/>+ real work] --> S[(Your store<br/>on your machine)]
+    L[Application link] --> R[Research<br/>the program]
+    S --> D[Draft answers<br/>from real facts]
+    R --> D
+    D --> F[Fill the form<br/>in your Chrome]
+    F --> G{{You review<br/>and submit}}
+    G -- outcome --> T[Learnings]
+    T --> D
 ```
 
-## Does it actually work?
+1. **Store** — your resume becomes a set of plain files: a profile, one file per project with outcomes and numbers, and the basics every form asks for. Anything inferred rather than stated is flagged and unusable until you confirm it.
+2. **Research** — for each program it works out what's really being selected for, the language the program uses, and the backgrounds of people who got in, then picks the one angle that makes *you* rare and valued there.
+3. **Draft** — every essay answer leads with something concrete, fits the word limit exactly (counted, not estimated), and comes with a one-line note on why that framing beats the generic one.
+4. **Fill** — boilerplate from your basics, essays from the drafts, resume uploaded to CV fields. Knows the quirks of Google Forms, Typeform, Tally, Luma, Ashby, Lever, Greenhouse and Airtable.
+5. **Stop** — you see the filled form and every answer. It is never submitted for you.
 
-We tested it the hard way before releasing it. Six synthetic applicant personas — a student, a SaaS founder, a community organiser, a researcher, an exaggerator, and a beginner — each wrote their own application answers, then the agent drafted the same answers from their real facts. All 22 answers were scored **blind** (shuffled and anonymised, scorer couldn't tell who wrote what) on specificity, selection-fit, verifiability, and voice.
+## Commands
 
-| Result | Number |
+**Every day**
+
+| Command | What it does |
 |---|---|
-| Average answer quality, written alone | **7.6 / 20** |
-| Average answer quality, drafted by the agent | **16.5 / 20** |
-| Average lift per answer | **+8.9 points — more than 2×** |
-| Biggest single jump (buried facts, corporate prose) | 4.5 → 18.5 |
+| `/apply <link>` | Research → draft → fill. Stops before Submit. |
+| `/apply answer <question>` | One tailored answer, plus why that framing works |
+| `/apply discover [focus]` | Finds programs open *now* that fit you — deadline and eligibility verified on each program's own page |
 
-The finding that surprised us: **honesty out-scored exaggeration.** One persona's self-written answer leaned on inflated claims and scored 8/20 ("reads as unverified sales pitch" — blind scorer). The agent refused the inflated claims, drafted only the modest true record, and scored 19/20 ("candid, precise numbers, doesn't inflate"). The no-lying rule isn't ethics theatre — it's what wins.
+**Around an application**
 
-Honest caveats: quality scores are a reviewer-proxy, not an acceptance guarantee — real programs have competition and luck. And the agent can't invent substance: the beginner persona with nothing shipped barely improved (it told him what to go build first instead). If you have real work, it will present it better than you do.
+| Command | What it does |
+|---|---|
+| `/apply interview <program>` | Likely questions, answer outlines, your weak spots, and a mock round |
+| `/apply followup <program>` | Thank-you, status nudge, or rejection reply — drafted, never sent |
+| `/apply log <program> <outcome>` | Records the result and turns it into a rule for next time |
+| `/apply stats` | Pipeline, upcoming deadlines, applications awaiting a reply, time saved |
 
-## Why it gets better over time
+**Your profile**
 
-Every outcome you log becomes a rule in `tracker/learnings.md` — "this framing won at builder residencies", "leading with metrics failed at community programs". The agent must check every new draft against those rules. Your rejections literally train your future applications.
+| Command | What it does |
+|---|---|
+| `/apply setup` | One-time onboarding from your resume |
+| `/apply update [resume]` | Edit your basics, or refresh projects from a new resume |
+| `/apply store <material>` | Add real work — notes, a project folder, anything |
+| `/apply showcase` | Generates a public proof-of-work page from your store |
 
-## What to expect
+## Does it work?
 
-- If your store is thin, the agent won't pretend otherwise — it will tell you exactly which real artefact (a demo link, a number, a shipped thing) would unlock a stronger answer. That list is the highest-value output it can give you early on.
-- Form auto-fill works in your own signed-in Chrome session and is best-effort: some login-gated or unusual forms may need you to paste the drafted answers yourself. The drafts are the product; the filling is the convenience.
+Before release, six synthetic applicants — a student, a SaaS founder, a community organiser, a researcher, an exaggerator and a beginner — wrote their own answers. The agent then drafted the same questions from the same facts. All 22 answers were shuffled, anonymised and scored **blind** on specificity, selection-fit, verifiability and voice.
+
+<div align="center">
+
+| | Score / 20 |
+|---|:---:|
+| Written alone | **7.6** |
+| Drafted by Form Filler | **16.5** |
+| Average lift | **+8.9 (2.2×)** |
+| Largest single jump | 4.5 → 18.5 |
+
+</div>
+
+**Honesty out-scored exaggeration.** The exaggerator's own answer scored 8/20 — *"reads as unverified sales pitch."* The agent dropped the inflated claims, wrote only the modest true record, and scored 19/20 — *"candid, precise numbers, doesn't inflate."*
+
+<details>
+<summary><b>Caveats</b></summary>
+
+- These are reviewer-proxy scores, not acceptance rates. Real programs involve competition and luck.
+- It can't create substance. The beginner with nothing shipped barely improved; the agent told them what to go and build first.
+- Form-filling is best effort. Some login-gated or unusual forms need you to paste the drafted answers yourself. The drafts are the product; the filling is the convenience.
+
+</details>
 
 ## Privacy
 
-Everything lives in plain files on your machine (`~/application-agent/`). This project has no server, no database and no telemetry — its author never sees your data.
+Your data lives in plain files at `~/application-agent/`. This project has no server, no database and no telemetry — its author never sees your data.
 
-To be precise about where your data goes:
-- **Claude (Anthropic):** when you run `/apply`, Claude Code reads the relevant store files and sends them to Anthropic's servers in the conversation, like any Claude Code session. Anthropic's [privacy policy](https://www.anthropic.com/legal/privacy) applies.
-- **Web research:** searches go out with the program's name, never your personal details.
-- **The form you're filling:** gets exactly what you see in the review step, and only when you click Submit yourself.
-- **The setup form** (`setup_form.py`) makes no network calls at all.
+| Where data goes | What's sent |
+|---|---|
+| **Claude (Anthropic)** | The store files needed for the task, as in any Claude Code session. [Anthropic's privacy policy](https://www.anthropic.com/legal/privacy) applies. |
+| **Web search** | The program's name — never your personal details. |
+| **The form** | Exactly what you approved in the review step, and only when *you* click Submit. |
+| **The setup form** | Nothing. `setup_form.py` makes no network calls. |
 
-Your store isn't backed up by this tool — include `~/application-agent` in Time Machine or a private cloud folder.
+Nothing here backs up your store — include `~/application-agent` in Time Machine or a private cloud folder.
 
-## Author
+## FAQ
 
-Built by [Baibhav Ajmera](https://www.linkedin.com/in/baibhavajmera) ([@ajmerabaibhav](https://github.com/ajmerabaibhav)).
+<details>
+<summary><b>Will it ever submit without asking?</b></summary>
 
-## License
+No. Submission requires a fresh, explicit "submit it" from you, every time. Standing permissions don't cover it.
+</details>
 
-MIT
+<details>
+<summary><b>What if my profile is thin?</b></summary>
+
+It says so. You get a short list of the specific facts or artefacts — a number, a demo link, a shipped thing — that would unlock stronger answers. Early on, that list is the most useful thing it produces.
+</details>
+
+<details>
+<summary><b>Does it get better over time?</b></summary>
+
+Yes. `/apply log` turns each outcome into a rule in `tracker/learnings.md` — *"leading with metrics failed at community programs"* — and every new draft is checked against every rule. Repeating a logged mistake counts as a failure.
+</details>
+
+<details>
+<summary><b>Is there a non-chat way to enter my basics?</b></summary>
+
+A full-screen terminal form with a calendar picker ships with the skill: `python3 ~/.claude/skills/apply/setup_form.py`. Optional.
+</details>
+
+<details>
+<summary><b>What's in the store?</b></summary>
+
+```
+~/application-agent/
+├── AGENT.md          your through-line and the drafting rules
+├── store/            facts about you — the only source of truth
+│   ├── basics.md
+│   ├── profile.md
+│   └── projects/
+├── research/         one brief per program
+├── applications/     every filled answer, kept for reuse and interviews
+└── tracker/          log of applications and learnings
+```
+</details>
+
+---
+
+<div align="center">
+<sub>Built by <a href="https://www.linkedin.com/in/baibhavajmera">Baibhav Ajmera</a> · <a href="LICENSE">MIT licence</a></sub>
+<br/><br/>
+<sub>~~~~~~~~~~~~~~~~~~~~~~~~~~~~🐆</sub>
+</div>
