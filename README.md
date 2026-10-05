@@ -50,14 +50,10 @@ Hand it your resume, confirm a short table of basics (name, email, phone, linksâ
 
 ```mermaid
 flowchart LR
-    A[Your resume<br/>+ real work] --> S[(Your store<br/>on your machine)]
-    L[Application link] --> R[Research<br/>the program]
-    S --> D[Draft answers<br/>from real facts]
-    R --> D
-    D --> F[Fill the form<br/>in your Chrome]
-    F --> G{{You review<br/>and submit}}
-    G -- outcome --> T[Learnings]
-    T --> D
+    S[(Your store)] --> D[Draft from<br/>real facts]
+    L[Link] --> R[Research] --> D
+    D --> F[Fill in<br/>your Chrome] --> G{{You submit}}
+    G -. outcome becomes a rule .-> D
 ```
 
 1. **Store** â€” your resume becomes a set of plain files: a profile, one file per project with outcomes and numbers, and the basics every form asks for. Anything inferred rather than stated is flagged and unusable until you confirm it.
