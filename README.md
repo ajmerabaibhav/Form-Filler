@@ -1,16 +1,6 @@
 <div align="center">
 
-```
-      ·  ˙    ·    ˙  ·
-   ˙    .-"""""""-.    ˙
-  ·    /  ·  ˙  ·  \    ·
-      |  (●)   (●)  |
-   ˙   \     ▽     /    ˙
-   ·    '-._____.-'    ·
-      ˙  ·    ˙    ·  ˙
-```
-
-# Form Filler
+# 🐆 Form Filler
 
 **Paste an application link. Get the strongest *honest* version of you, filled in and waiting for your review.**
 
@@ -32,13 +22,11 @@ Residencies, fellowships, accelerators, hackathons, popup villages — every for
 
 Form Filler fixes the presentation and refuses to touch the substance.
 
-| | |
-|---|---|
-| **Grounded** | Every claim traces to a fact in your store. Nothing invented, nothing rounded up. |
-| **Researched** | Reads what each program *actually* selects for, and who gets in, before writing a word. |
-| **Asks, never guesses** | If an answer needs a fact it doesn't have, it tells you which one — instead of making it up. |
-| **You submit** | It fills the form and stops. Submitting always takes your explicit go-ahead. |
-| **Learns** | Every acceptance and rejection becomes a rule that every future draft is checked against. |
+- **Grounded** — every claim traces to a fact in your store. Nothing invented, nothing rounded up.
+- **Researched** — reads what each program *actually* selects for, and who gets in, before writing a word.
+- **Asks, never guesses** — if an answer needs a fact it doesn't have, it tells you which one — instead of making it up.
+- **You submit** — it fills the form and stops. Submitting always takes your explicit go-ahead.
+- **Learns** — every acceptance and rejection becomes a rule that every future draft is checked against.
 
 ## Install
 
