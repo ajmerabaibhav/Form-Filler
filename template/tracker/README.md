@@ -4,9 +4,10 @@ Measures what this system produces for you, so it improves over time.
 
 ## log.jsonl — one line per application
 ```json
-{"date": "2026-07-01", "target": "Program X", "url": "...", "questions": 6, "words_drafted": 800, "minutes_saved": 50, "status": "submitted", "outcome": "pending", "framings": ["..."], "notes": ""}
+{"date": "2026-07-01", "target": "Program X", "url": "...", "questions": 6, "words_drafted": 800, "minutes_saved": 50, "deadline": "2026-07-15", "status": "submitted", "outcome": "pending", "framings": ["..."], "notes": ""}
 ```
-- status: drafted | filled | submitted | abandoned
+- status: shortlisted | filled | submitted | abandoned
+- deadline: YYYY-MM-DD, or omitted if none
 - outcome: pending | accepted | rejected | waitlisted | interview
 
 ## learnings.md — the improvement loop

@@ -83,8 +83,11 @@ It asks for your resume (that alone is enough — add more if you want), then sh
 /apply answer <paste any question>     → one tailored, grounded answer + why that framing wins
 /apply update [new resume]             → refresh basics (pre-filled form) or re-read a new resume
 /apply store <resume / notes / folder> → add more real work to your store any time
+/apply discover [focus]                → find open programs that fit you, with deadlines
+/apply interview "Program"             → likely questions, answer outlines, mock round
+/apply followup "Program"              → thank-you / status nudge / rejection reply (you send it)
 /apply log "Program" accepted|rejected → feeds the learning loop (do this every time!)
-/apply stats                           → applications, time saved, what framings win
+/apply stats                           → pipeline, upcoming deadlines, time saved, what framings win
 /apply showcase                        → auto-generate a public proof-of-work page from your store
 ```
 
